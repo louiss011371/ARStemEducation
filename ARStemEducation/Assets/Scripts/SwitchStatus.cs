@@ -5,11 +5,17 @@ using UnityEngine;
 public class SwitchStatus : MonoBehaviour
 {
     GameObject onOffButton;
+    public GameObject bulbObj;
+    GameObject bulbLight;
+    public Material lightOnMaterial;
+    public Material lightOffMaterial;
 
     private void Start()
     {
         Debug.Log("SwtichStatus loaded");
         onOffButton = this.gameObject.transform.GetChild(0).gameObject;
+        bulbObj = GameObject.Find("Bulb");
+        bulbLight = bulbObj.gameObject.transform.GetChild(0).gameObject;
     }
  
     void Update()
@@ -35,11 +41,18 @@ public class SwitchStatus : MonoBehaviour
     {
         if(onOffButton.transform.localPosition.z <0) {
             onOffButton.transform.localPosition = new Vector3(onOffButton.transform.localPosition.x , onOffButton.transform.localPosition.y, onOffButton.transform.localPosition.z +0.7f);
+            bulbLight.GetComponent<MeshRenderer>().material = lightOnMaterial;
         }
     }
 
     public void StatusOff()
     {
         onOffButton.transform.localPosition = new Vector3(onOffButton.transform.localPosition.x, onOffButton.transform.localPosition.y, -0.7f);
+        bulbLight.GetComponent<MeshRenderer>().material = lightOffMaterial;
+    }
+
+    public void BulbLight()
+    {
+
     }
 }

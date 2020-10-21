@@ -1472,6 +1472,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1902786742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1931527115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 847340753309031124, guid: 5b142ae95cc8244fcbd000b9c8b88825,
+    type: 3}
+  m_PrefabInstance: {fileID: 614321810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1997459835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4425538882001319260, guid: 23f6db228906a4a499151f9d40ade1ac,
@@ -1496,3 +1502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9a9ec500f3e4308b04222b679f645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulbObj: {fileID: 1931527115}
+  lightOnMaterial: {fileID: 2100000, guid: 86141b463626a49cb82f8ae08fc1fdf9, type: 2}
+  lightOffMaterial: {fileID: 2100000, guid: fbf68a8d8169648f28861ba7ad7f14b5, type: 2}
