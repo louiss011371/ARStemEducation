@@ -26,34 +26,37 @@ public class SwitchBar : MonoBehaviour
     {
         if (Input.GetKeyDown("w"))
         {
-            Debug.Log("before w key down " + Quaternion.Euler(onOffButton.transform.rotation.x, onOffButton.transform.rotation.y, onOffButton.transform.rotation.z));
+            Debug.Log("before w key down " + onOffButton.transform.rotation.z);
             StatusOff();
-            Debug.Log("after w key down " + onOffButton.transform.localRotation.x);
+            Debug.Log("after w key down " + onOffButton.transform.localRotation.z);
 
         }
         if (Input.GetKeyDown("s"))
         {
-            Debug.Log("before s key down " + onOffButton.transform.rotation.x);
+            Debug.Log("before s key down " + onOffButton.transform.rotation.z);
+          
             StatusOn();
-            Debug.Log("after s key down " + onOffButton.transform.rotation.x);
+            Debug.Log("after s key down " + onOffButton.transform.rotation.z * 1000000);
+          
         }
     }
 
     public void StatusOn()
     {
-        if (onOffButton.transform.localRotation.x * 10 > 1.7)
+        if (onOffButton.transform.localRotation.z < -0.17)
         {
-            onOffButton.transform.Rotate(-20, 0, 0);
+            onOffButton.transform.Rotate(0, 0, 20);
             bulbLight.GetComponent<MeshRenderer>().material = lightOnMaterial;
         }
     }
 
     public void StatusOff()
     {
-        if (onOffButton.transform.localRotation.x < 0.17)
+
+        if (onOffButton.transform.localRotation.z * 1000000 > -0.07)
         {
 
-            onOffButton.transform.Rotate(20, 0, 0);
+            onOffButton.transform.Rotate(0, 0, -20);
 
             bulbLight.GetComponent<MeshRenderer>().material = lightOffMaterial;
         }
