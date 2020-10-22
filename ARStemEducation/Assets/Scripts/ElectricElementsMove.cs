@@ -30,19 +30,19 @@ public class ElectricElementsMove : MonoBehaviour
         {
             if (obj.transform.position.x < 5 && obj.transform.position.z > -0.1)
             {
-                obj.transform.position += new Vector3(0.1f, 0f, 0f);
+                obj.transform.position += new Vector3(0.03f, 0f, 0f);
             }
             if (obj.transform.position.x > 5 && obj.transform.position.z > -3.9)
             {
-                obj.transform.position += new Vector3(0f, 0f, -0.1f);
+                obj.transform.position += new Vector3(0f, 0f, -0.03f);
             }
             if (obj.transform.position.z < -3.9)
             {
-                obj.transform.position += new Vector3(-0.1f, 0f, 0f);
+                obj.transform.position += new Vector3(-0.03f, 0f, 0f);
             }
             if (obj.transform.position.x < -3)
             {
-                obj.transform.position += new Vector3(0f, 0f, 0.1f);
+                obj.transform.position += new Vector3(0f, 0f, 0.03f);
 
             }
         }
