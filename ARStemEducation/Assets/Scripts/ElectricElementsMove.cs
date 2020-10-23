@@ -20,9 +20,9 @@ public class ElectricElementsMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
     }
-    private void Move()
+    public void Move()
     {
         //Debug.Log("z" + obj.transform.position.z);
         //Debug.Log("x" + obj.transform.position.x);

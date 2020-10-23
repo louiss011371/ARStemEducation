@@ -1459,6 +1459,7 @@ MonoBehaviour:
   bulbObj: {fileID: 1931527115}
   lightOnMaterial: {fileID: 2100000, guid: 86141b463626a49cb82f8ae08fc1fdf9, type: 2}
   lightOffMaterial: {fileID: 2100000, guid: fbf68a8d8169648f28861ba7ad7f14b5, type: 2}
+  electricElementsMove: {fileID: 1928305996}
 --- !u!4 &916474536
 Transform:
   m_ObjectHideFlags: 0
@@ -2823,7 +2824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1928305997}
-  - component: {fileID: 1928305999}
+  - component: {fileID: 1928305998}
   m_Layer: 0
   m_Name: Elements
   m_TagString: Untagged
@@ -2868,7 +2869,7 @@ Transform:
   m_Father: {fileID: 1777891978}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1928305999
+--- !u!114 &1928305998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

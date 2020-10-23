@@ -9,6 +9,8 @@ public class SwitchBar : MonoBehaviour
     GameObject bulbLight;
     public Material lightOnMaterial;
     public Material lightOffMaterial;
+    public GameObject electricElementsMove;
+    bool shouldMove;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class SwitchBar : MonoBehaviour
         Debug.Log("SwtichStatus loaded");
         bulbObj = GameObject.Find("Bulb");
         bulbLight = bulbObj.gameObject.transform.GetChild(0).gameObject;
+        shouldMove = false;
     }
     void Update()
     {
@@ -24,6 +27,7 @@ public class SwitchBar : MonoBehaviour
 
     public void SwitchController()
     {
+        ShouldMove();
         if (Input.GetKeyDown("w"))
         {
             Debug.Log("before w key down " + onOffButton.transform.rotation.z);
@@ -37,28 +41,37 @@ public class SwitchBar : MonoBehaviour
           
             StatusOn();
             Debug.Log("after s key down " + onOffButton.transform.rotation.z * 1000000);
-          
         }
     }
 
-    public void StatusOn()
+    // Light On
+    public void StatusOn() 
     {
         if (onOffButton.transform.localRotation.z < -0.17)
         {
             onOffButton.transform.Rotate(0, 0, 20);
             bulbLight.GetComponent<MeshRenderer>().material = lightOnMaterial;
+            shouldMove = true;
         }
     }
 
-    public void StatusOff()
+    // Light Off
+    public void StatusOff() 
     {
 
         if (onOffButton.transform.localRotation.z * 1000000 > -0.07)
         {
-
             onOffButton.transform.Rotate(0, 0, -20);
-
             bulbLight.GetComponent<MeshRenderer>().material = lightOffMaterial;
+            shouldMove = false;
         }
     }
+    public void ShouldMove()
+    {
+        if(shouldMove)
+        {
+            electricElementsMove.GetComponent<ElectricElementsMove>().Move();
+        }
+    }
+
 }
