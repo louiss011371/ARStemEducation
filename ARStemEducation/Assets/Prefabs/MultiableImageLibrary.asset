@@ -35,3 +35,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: element
     m_Texture: {fileID: 2800000, guid: cb632a3e186c441fab0369f338e75529, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5105724934495625733
+      m_GuidHigh: 9146277347179707560
+    m_SerializedTextureGuid:
+      m_GuidLow: 7274329675921739927
+      m_GuidHigh: 2641802146943886650
+    m_Size: {x: 0.1, y: 0.035897437}
+    m_SpecifySize: 1
+    m_Name: Electrolysis
+    m_Texture: {fileID: 0}
