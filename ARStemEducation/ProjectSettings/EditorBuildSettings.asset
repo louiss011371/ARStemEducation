@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MenuScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ElementsScene.unity
     guid: ad62439dd383243189f9b24d760e852b
   - enabled: 0
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ElectricScene.unity
     guid: f8f4270dd79b3489aa6190aba4b81596
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/AR/ARChemicalScene.unity
     guid: 0bdfd494642e54618bbf7722a57b1df8
   m_configObjects:

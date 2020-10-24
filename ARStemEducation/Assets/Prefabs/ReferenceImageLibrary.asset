@@ -14,14 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GuidLow: 5607219540444344770
   m_GuidHigh: 8628621867057595290
-  m_Images:
-  - m_SerializedGuid:
-      m_GuidLow: 5352718422286773891
-      m_GuidHigh: 3791757240205854876
-    m_SerializedTextureGuid:
-      m_GuidLow: 4908668974404938302
-      m_GuidHigh: 2978540960363381675
-    m_Size: {x: 0.1, y: 0.07313318}
-    m_SpecifySize: 1
-    m_Name: H2OImage
-    m_Texture: {fileID: 2800000, guid: cb632a3e186c441fab0369f338e75529, type: 3}
+  m_Images: []
