@@ -5,23 +5,31 @@ using Vuforia;
 
 public class ElementsOnClick : MonoBehaviour, IVirtualButtonEventHandler
 {
-    public GameObject model, vButton;
+    public GameObject h2oObj, waterElectObj, electFormula, vButton;
 
     private void Start()
     {
-        model = GameObject.Find("H2O");
+        //h2oObj = GameObject.Find("H2O");
+        //waterElectObj = GameObject.Find("Electrolysis");
         vButton.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
+        waterElectObj.SetActive(false);
+        electFormula.SetActive(false);
+
     }
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
         //throw new System.NotImplementedException();
-        model.gameObject.transform.Rotate(0, 90, 0);
+        h2oObj.SetActive(false);
+        waterElectObj.SetActive(true);
+        electFormula.SetActive(true);
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
     {
         //throw new System.NotImplementedException();
-        model.gameObject.transform.Rotate(0, 0, 0);
+        waterElectObj.SetActive(false);
+        electFormula.SetActive(false);
+        h2oObj.SetActive(true);
     }
 }
