@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: MultiableImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4720049071989538315
+  m_GuidHigh: 8693717537208597638
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5244722659649573403
+      m_GuidHigh: 11175789303104287369
+    m_SerializedTextureGuid:
+      m_GuidLow: 16462632918371059697
+      m_GuidHigh: 4482499102001175306
+    m_Size: {x: 0.1, y: 0.08046154}
+    m_SpecifySize: 1
+    m_Name: mocyo
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4915471774100679178
+      m_GuidHigh: 3511464356399860639
+    m_SerializedTextureGuid:
+      m_GuidLow: 4908668974404938302
+      m_GuidHigh: 2978540960363381675
+    m_Size: {x: 0.13673684, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: element
+    m_Texture: {fileID: 2800000, guid: cb632a3e186c441fab0369f338e75529, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5105724934495625733
+      m_GuidHigh: 9146277347179707560
+    m_SerializedTextureGuid:
+      m_GuidLow: 7274329675921739927
+      m_GuidHigh: 2641802146943886650
+    m_Size: {x: 0.1, y: 0.035897437}
+    m_SpecifySize: 1
+    m_Name: Electrolysis
+    m_Texture: {fileID: 0}
