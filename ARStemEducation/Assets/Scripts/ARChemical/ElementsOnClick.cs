@@ -11,8 +11,6 @@ public class ElementsOnClick : MonoBehaviour, ITrackableEventHandler
     public Text text;
     // object detection listener
     private TrackableBehaviour mTrackableBehaviour;
-    Quaternion h2oObjInitRot;
-    Quaternion waterElectObjInitRot;
 
     private void Start()
     {
@@ -20,10 +18,6 @@ public class ElementsOnClick : MonoBehaviour, ITrackableEventHandler
         waterElectObj.SetActive(false);
         electFormula.SetActive(false);
         text = btn.GetComponentInChildren<Text>();
-        text.text = "Electrolysis";
-        // init rotation
-        h2oObjInitRot = h2oObj.transform.rotation;
-        waterElectObjInitRot = waterElectObj.transform.rotation;
 
         // init listener
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -37,14 +31,12 @@ public class ElementsOnClick : MonoBehaviour, ITrackableEventHandler
     {
         if (h2oObj.activeSelf == true)
         {
-            h2oObj.transform.rotation = h2oObjInitRot;
-            waterElectObj.transform.rotation = waterElectObjInitRot;
+            ResetRotation();
             ShowWaterElectObj();
         }
         else if (waterElectObj.activeSelf == true)
         {
-            h2oObj.transform.rotation = h2oObjInitRot;
-            waterElectObj.transform.rotation = waterElectObjInitRot;
+            ResetRotation();
             ShowH2OObj();
         }
     }
@@ -57,12 +49,11 @@ public class ElementsOnClick : MonoBehaviour, ITrackableEventHandler
         {
             // Show button when target is found
             btn.gameObject.SetActive(true);
+            ResetRotation();
             ShowH2OObj();
         }
         else
         {
-            // Hidden button when target is lost
-            // reset pos , rotation
             btn.gameObject.SetActive(false);
         }
     }
@@ -81,5 +72,11 @@ public class ElementsOnClick : MonoBehaviour, ITrackableEventHandler
         waterElectObj.SetActive(true);
         electFormula.SetActive(true);
         text.text = "H2O";
+    }
+
+    private void ResetRotation()
+    {
+        h2oObj.transform.rotation = new Quaternion(0, 0, 0, 0);
+        waterElectObj.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 }
