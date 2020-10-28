@@ -65,5 +65,5 @@ MonoBehaviour:
     autoStartTracker: 0
   webcam:
     deviceNameSetInEditor: "FaceTime HD\u93E1\u982D\uFF08\u5167\u7F6E\uFF09"
-    turnOffWebCam: 0
+    turnOffWebCam: 1
     renderTextureLayer: 30
