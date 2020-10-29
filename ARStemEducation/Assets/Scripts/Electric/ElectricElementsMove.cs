@@ -28,21 +28,21 @@ public class ElectricElementsMove : MonoBehaviour
         //Debug.Log("x" + obj.transform.position.x);
         foreach (GameObject obj in elementObj)
         {
-            if (obj.transform.position.x < 5 && obj.transform.position.z > -0.1)
+            if (obj.transform.localPosition.x < 5 && obj.transform.localPosition.z > -0.1)
             {
-                obj.transform.position += new Vector3(0.03f, 0f, 0f);
+                obj.transform.localPosition += new Vector3(0.03f, 0f, 0f);
             }
-            if (obj.transform.position.x > 5 && obj.transform.position.z > -3.9)
+            if (obj.transform.localPosition.x > 5 && obj.transform.localPosition.z > -3.9)
             {
-                obj.transform.position += new Vector3(0f, 0f, -0.03f);
+                obj.transform.localPosition += new Vector3(0f, 0f, -0.03f);
             }
-            if (obj.transform.position.z < -3.9)
+            if (obj.transform.localPosition.z < -3.9)
             {
-                obj.transform.position += new Vector3(-0.03f, 0f, 0f);
+                obj.transform.localPosition += new Vector3(-0.03f, 0f, 0f);
             }
-            if (obj.transform.position.x < -3)
+            if (obj.transform.localPosition.x < -3)
             {
-                obj.transform.position += new Vector3(0f, 0f, 0.03f);
+                obj.transform.localPosition += new Vector3(0f, 0f, 0.03f);
 
             }
         }

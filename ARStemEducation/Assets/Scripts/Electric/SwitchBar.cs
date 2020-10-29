@@ -20,7 +20,8 @@ public class SwitchBar : MonoBehaviour
         bulbLight = bulbObj.gameObject.transform.GetChild(0).gameObject;
         shouldMove = false;
     }
-    void Update()
+
+    private void Update()
     {
         SwitchController();
     }
@@ -28,6 +29,17 @@ public class SwitchBar : MonoBehaviour
     public void SwitchController()
     {
         ShouldMove();
+        for(int i = 0; i < Input.touchCount; ++i )
+        {
+            if(Input.GetTouch(i).phase == TouchPhase.Began && onOffButton.transform.localRotation.z * 1000000 > -0.07)
+            {
+                StatusOff();
+            }
+             else if (Input.GetTouch(i).phase == TouchPhase.Began && onOffButton.transform.localRotation.z < -0.17)
+            {
+                StatusOn();
+            }
+        }
         if (Input.GetKeyDown("w"))
         {
             Debug.Log("before w key down " + onOffButton.transform.rotation.z);
@@ -38,7 +50,7 @@ public class SwitchBar : MonoBehaviour
         if (Input.GetKeyDown("s"))
         {
             Debug.Log("before s key down " + onOffButton.transform.rotation.z);
-          
+
             StatusOn();
             Debug.Log("after s key down " + onOffButton.transform.rotation.z * 1000000);
         }
