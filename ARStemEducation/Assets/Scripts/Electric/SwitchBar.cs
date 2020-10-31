@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwitchBar : MonoBehaviour
 {
@@ -11,48 +12,32 @@ public class SwitchBar : MonoBehaviour
     public Material lightOffMaterial;
     public GameObject electricElementsMove;
     bool shouldMove;
+    public Button btn;
+    public Text text;
     // Start is called before the first frame update
     void Start()
     {
         onOffButton = this.gameObject;
-        Debug.Log("SwtichStatus loaded");
+        Debug.Log("SwitchBar loaded");
         bulbObj = GameObject.Find("Bulb");
         bulbLight = bulbObj.gameObject.transform.GetChild(0).gameObject;
         shouldMove = false;
+        text = btn.GetComponentInChildren<Text>();
+        text.text = "Switch On";
     }
 
     private void Update()
     {
-        SwitchController();
+        ShouldMove();
     }
 
-    public void SwitchController()
-    {
-        ShouldMove();
-        for(int i = 0; i < Input.touchCount; ++i )
+    public void OnClick() {
+        if (text.text == "Switch On")
         {
-            if(Input.GetTouch(i).phase == TouchPhase.Began && onOffButton.transform.localRotation.z * 1000000 > -0.07)
-            {
-                StatusOff();
-            }
-             else if (Input.GetTouch(i).phase == TouchPhase.Began && onOffButton.transform.localRotation.z < -0.17)
-            {
-                StatusOn();
-            }
-        }
-        if (Input.GetKeyDown("w"))
-        {
-            Debug.Log("before w key down " + onOffButton.transform.rotation.z);
-            StatusOff();
-            Debug.Log("after w key down " + onOffButton.transform.localRotation.z);
-
-        }
-        if (Input.GetKeyDown("s"))
-        {
-            Debug.Log("before s key down " + onOffButton.transform.rotation.z);
-
             StatusOn();
-            Debug.Log("after s key down " + onOffButton.transform.rotation.z * 1000000);
+        } else if(text.text == "Switch Off")
+        {
+            StatusOff();
         }
     }
 
@@ -64,18 +49,19 @@ public class SwitchBar : MonoBehaviour
             onOffButton.transform.Rotate(0, 0, 20);
             bulbLight.GetComponent<MeshRenderer>().material = lightOnMaterial;
             shouldMove = true;
+            text.text = "Switch Off";
         }
     }
 
     // Light Off
     public void StatusOff() 
     {
-
         if (onOffButton.transform.localRotation.z * 1000000 > -0.07)
         {
             onOffButton.transform.Rotate(0, 0, -20);
             bulbLight.GetComponent<MeshRenderer>().material = lightOffMaterial;
             shouldMove = false;
+            text.text = "Switch On";
         }
     }
     public void ShouldMove()
@@ -85,5 +71,4 @@ public class SwitchBar : MonoBehaviour
             electricElementsMove.GetComponent<ElectricElementsMove>().Move();
         }
     }
-
 }
