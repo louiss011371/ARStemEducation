@@ -31,7 +31,8 @@ public class SwitchBar : MonoBehaviour
         ShouldMove();
     }
 
-    public void OnClick() {
+    public void OnClick()
+    {
         if (text.text == "Switch On")
         {
             StatusOn();
@@ -40,7 +41,6 @@ public class SwitchBar : MonoBehaviour
             StatusOff();
         }
     }
-
     // Light On
     public void StatusOn() 
     {
@@ -52,7 +52,6 @@ public class SwitchBar : MonoBehaviour
             text.text = "Switch Off";
         }
     }
-
     // Light Off
     public void StatusOff() 
     {
