@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class TestCollision : MonoBehaviour
 {
-    private void OnCollisionEnter()
-    {
-        Debug.Log("two elements has collised");
-    }
+    // Check two trigger objects are collided
     private void OnTriggerEnter(Collider collider)
     {
         Debug.Log("trigger entered name : " + collider.name);
+        if(collider.name == "Fe" || collider.name == "S")
+        {
+            Destroy(collider.gameObject);
+        }
     }
 }
