@@ -15,18 +15,21 @@ public class TestCollision : MonoBehaviour
     }
     private void Update()
     {
-       if(Input.GetKey("a"))
+       for(int i = 0; i<Input.touchCount; ++i)
         {
-            anim.Play("Burning");
-            fesTextObj.SetActive(true);
-        }
-       if(sObj != null)
-        {
-            ChangeElement();
-        }
-        else
-        {
-            ChangeColor();
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                anim.Play("Burning");
+                fesTextObj.SetActive(true);
+            }
+            if (sObj != null)
+            {
+                ChangeElement();
+            }
+            else
+            {
+                ChangeColor();
+            }
         }
     }
 
