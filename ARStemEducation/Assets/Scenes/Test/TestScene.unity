@@ -121,6 +121,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &57874429
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'arlabMaterial
+
+    36434'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 31f4ce114997401d87cf377dbab98ac3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &136030978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1431,21 @@ PrefabInstance:
       propertyPath: fesTextObj
       value: 
       objectReference: {fileID: 809680459}
+    - target: {fileID: 6121312463388534135, guid: 50b9e6e01e2164653bd11b6b9edb955a,
+        type: 3}
+      propertyPath: fullNameTextObj
+      value: 
+      objectReference: {fileID: 841937273}
+    - target: {fileID: 6121312463388534135, guid: 50b9e6e01e2164653bd11b6b9edb955a,
+        type: 3}
+      propertyPath: fesEqualTextObj
+      value: 
+      objectReference: {fileID: 1887008225}
+    - target: {fileID: 6121312463388534135, guid: 50b9e6e01e2164653bd11b6b9edb955a,
+        type: 3}
+      propertyPath: fullNameEqualTextObj
+      value: 
+      objectReference: {fileID: 1551473138}
     - target: {fileID: 6422526177834971466, guid: 50b9e6e01e2164653bd11b6b9edb955a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6260,7 +6303,7 @@ GameObject:
   - component: {fileID: 1551473141}
   - component: {fileID: 1551473140}
   m_Layer: 0
-  m_Name: Equal
+  m_Name: FullNameEqual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6341,34 +6384,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!21 &1563647045
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'arlabMaterial
-
-    34582'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 31f4ce114997401d87cf377dbab98ac3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1571293667
 GameObject:
   m_ObjectHideFlags: 0
@@ -6416,7 +6431,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1563647045}
+  - {fileID: 57874429}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6645,7 +6660,7 @@ GameObject:
   - component: {fileID: 1887008228}
   - component: {fileID: 1887008227}
   m_Layer: 0
-  m_Name: Equal (1)
+  m_Name: FesEqual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
