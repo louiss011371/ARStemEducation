@@ -4,12 +4,56 @@ using UnityEngine;
 
 public class TestCollision : MonoBehaviour
 {
-    private void OnCollisionEnter()
+    public Animator anim;
+    public GameObject feObj, sObj;
+    public GameObject fesTextObj;
+    private void Start()
     {
-        Debug.Log("two elements has collised");
+        //anim = GetComponent<Animator>();
+        anim.Play("None");
+        fesTextObj.SetActive(false);
     }
+    private void Update()
+    {
+       for(int i = 0; i<Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                anim.Play("Burning");
+                fesTextObj.SetActive(true);
+            }
+            if (sObj != null)
+            {
+                ChangeElement();
+            }
+            else
+            {
+                ChangeColor();
+            }
+        }
+    }
+
+    // if Fe element position is equal to S element
+    private void ChangeElement()
+    {
+        if (feObj.transform.localPosition == sObj.transform.localPosition)
+        {
+            Debug.Log("Fe and S merged");
+            Destroy(sObj);
+        }
+    }
+    private void ChangeColor()
+    {
+        anim.Play("ChangeColor");
+        Debug.Log("ChangeColor() play");
+    }
+    // Check two trigger objects are collided
     private void OnTriggerEnter(Collider collider)
     {
         Debug.Log("trigger entered name : " + collider.name);
+        if(collider.name == "Fe" || collider.name == "S")
+        {
+           // Destroy(collider.gameObject);
+        }
     }
 }
