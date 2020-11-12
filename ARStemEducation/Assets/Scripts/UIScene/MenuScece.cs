@@ -7,11 +7,15 @@ public class MenuScece : MonoBehaviour
 {
     public void MenuToChem()
     {
-        SceneManager.LoadScene("ElementsScene");
+        SceneManager.LoadScene("ARElementVuforia");
+    }
+    public void MenuToARLab()
+    {
+        SceneManager.LoadScene("TestScene");
     }
     public void MenuToElectric()
     {
-        SceneManager.LoadScene("ElectricScene");
+        SceneManager.LoadScene("ARElectricVuforia");
     }
     public void MenuToHome()
     {
