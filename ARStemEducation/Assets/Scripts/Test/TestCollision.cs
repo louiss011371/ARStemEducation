@@ -6,12 +6,15 @@ public class TestCollision : MonoBehaviour
 {
     public Animator anim;
     public GameObject feObj, sObj;
-    public GameObject fesTextObj;
+    public GameObject fesTextObj, fullNameTextObj, fesEqualTextObj, fullNameEqualTextObj;
     private void Start()
     {
         //anim = GetComponent<Animator>();
         anim.Play("None");
         fesTextObj.SetActive(false);
+        fullNameTextObj.SetActive(false);
+        fesEqualTextObj.SetActive(false);
+        fullNameEqualTextObj.SetActive(false);
     }
     private void Update()
     {
@@ -21,6 +24,9 @@ public class TestCollision : MonoBehaviour
             {
                 anim.Play("Burning");
                 fesTextObj.SetActive(true);
+                fullNameTextObj.SetActive(true);
+                fesEqualTextObj.SetActive(true);
+                fullNameEqualTextObj.SetActive(true);
             }
             if (sObj != null)
             {
