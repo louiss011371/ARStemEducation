@@ -8,10 +8,12 @@ public class TestMC : MonoBehaviour
 {
     public Button ansABtn, ansBBtn, ansCBtn;
     public Text ansAText, ansBText, ansCText;
+    public GameObject messageText;
     public MCArrayList mc;
     private int index = 0;
     void Start()
     {
+        // init a MC arrayList from MCArrayList class
         mc = gameObject.GetComponent<MCArrayList>();
         mc.SetCurrentIndex(index);
         Debug.Log("mc list size " + mc.GetSize());
@@ -28,34 +30,38 @@ public class TestMC : MonoBehaviour
         btnA.onClick.AddListener(() => ButtonCallBack(btnA));
         btnB.onClick.AddListener(() => ButtonCallBack(btnB));
         btnC.onClick.AddListener(() => ButtonCallBack(btnC));
+
+        messageText.SetActive(false);
     }
     void Update()
     {
-        //OnClick();
+
     }
 
-    public void ButtonCallBack(Button buttonPressed) 
+    private void ButtonCallBack(Button buttonPressed) 
     {
-        if (buttonPressed == ansABtn)
-        {
-            CheckAns(mc.GetValue(index).ansA, index);
-        }   
-        if (buttonPressed == ansBBtn)
-        {
-            CheckAns(mc.GetValue(index).ansB, index);
-        }
-        if (buttonPressed == ansCBtn)
-        {
-            CheckAns(mc.GetValue(index).ansC, index);
-        }
+            if (buttonPressed == ansABtn)
+            {
+                CheckAns(mc.GetValue(index).ansA, index);
+            }
+            if (buttonPressed == ansBBtn)
+            {
+                CheckAns(mc.GetValue(index).ansB, index);
+            }
+            if (buttonPressed == ansCBtn)
+            {
+                CheckAns(mc.GetValue(index).ansC, index);
+            }
+            index += 1;
         CheckIndex();
     }
 
     private void CheckIndex()
     {
-        if(index < mc.GetSize() - 1)
+        if (index == mc.GetSize())
         {
-            index += 1;
+            messageText.SetActive(true);
+            Debug.Log("You finished the MC !!");
         }
     }
 
