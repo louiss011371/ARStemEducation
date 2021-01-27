@@ -9,8 +9,18 @@ public class TestMC : MonoBehaviour
     public Button ansABtn, ansBBtn, ansCBtn;
     public Text ansAText, ansBText, ansCText;
     public GameObject messageText;
+    public GameObject greenFlameObj;
+    public GameObject redFlameObj;
+    public GameObject whiteFlameObj;
+    public GameObject yellowFlameObj;
+    private ParticleSystem greenFlame;
+    private ParticleSystem redFlame;
+    private ParticleSystem whiteFlame;
+    private ParticleSystem yellowFlame;
     public MCArrayList mc;
     private int index = 0;
+
+    [Obsolete]
     void Start()
     {
         // init a MC arrayList from MCArrayList class
@@ -26,33 +36,42 @@ public class TestMC : MonoBehaviour
         Button btnB = ansBBtn.GetComponent<Button>();
         Button btnC = ansCBtn.GetComponent<Button>();
 
-        // init onClickListener
+        // set OnClick listener
         btnA.onClick.AddListener(() => ButtonCallBack(btnA));
         btnB.onClick.AddListener(() => ButtonCallBack(btnB));
         btnC.onClick.AddListener(() => ButtonCallBack(btnC));
 
         messageText.SetActive(false);
+        // init Compound Flame is hidden
+        greenFlameObj.SetActive(false);
+        redFlameObj.SetActive(false);
+        whiteFlameObj.SetActive(false);
+        yellowFlameObj.SetActive(false);
     }
     void Update()
     {
-
+     
     }
 
-    private void ButtonCallBack(Button buttonPressed) 
+    [Obsolete]
+    private void ButtonCallBack(Button buttonPressed)
     {
-            if (buttonPressed == ansABtn)
-            {
-                CheckAns(mc.GetValue(index).ansA, index);
-            }
-            if (buttonPressed == ansBBtn)
-            {
-                CheckAns(mc.GetValue(index).ansB, index);
-            }
-            if (buttonPressed == ansCBtn)
-            {
-                CheckAns(mc.GetValue(index).ansC, index);
-            }
-            index += 1;
+        if (buttonPressed == ansABtn)
+        {
+            CheckAns(mc.GetValue(index).ansA, index);
+            greenFlameObj.SetActive(true);
+        }
+        if (buttonPressed == ansBBtn)
+        {
+            CheckAns(mc.GetValue(index).ansB, index);
+            greenFlame.startColor = Color.red;
+        }
+        if (buttonPressed == ansCBtn)
+        {
+            CheckAns(mc.GetValue(index).ansC, index);
+            greenFlame.startColor = Color.yellow;
+        }
+        //index += 1;
         CheckIndex();
     }
 
