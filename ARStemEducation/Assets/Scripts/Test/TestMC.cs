@@ -13,14 +13,9 @@ public class TestMC : MonoBehaviour
     public GameObject redFlameObj;
     public GameObject whiteFlameObj;
     public GameObject yellowFlameObj;
-    private ParticleSystem greenFlame;
-    private ParticleSystem redFlame;
-    private ParticleSystem whiteFlame;
-    private ParticleSystem yellowFlame;
     public MCArrayList mc;
     private int index = 0;
 
-    [Obsolete]
     void Start()
     {
         // init a MC arrayList from MCArrayList class
@@ -50,11 +45,23 @@ public class TestMC : MonoBehaviour
     }
     void Update()
     {
-     
+
     }
 
-    [Obsolete]
     private void ButtonCallBack(Button buttonPressed)
+    {
+        if (index < mc.GetSize())
+        {
+            CheckIndex(buttonPressed);
+        }
+        if (index == mc.GetSize())
+        {
+            messageText.SetActive(true);
+            Debug.Log("You finished the MC !!");
+        }
+    }
+
+    private void CheckIndex(Button buttonPressed)
     {
         if (buttonPressed == ansABtn)
         {
@@ -64,24 +71,12 @@ public class TestMC : MonoBehaviour
         if (buttonPressed == ansBBtn)
         {
             CheckAns(mc.GetValue(index).ansB, index);
-            greenFlame.startColor = Color.red;
         }
         if (buttonPressed == ansCBtn)
         {
             CheckAns(mc.GetValue(index).ansC, index);
-            greenFlame.startColor = Color.yellow;
         }
-        //index += 1;
-        CheckIndex();
-    }
-
-    private void CheckIndex()
-    {
-        if (index == mc.GetSize())
-        {
-            messageText.SetActive(true);
-            Debug.Log("You finished the MC !!");
-        }
+        index += 1;
     }
 
     private void CheckAns(string selectedAns, int index)
