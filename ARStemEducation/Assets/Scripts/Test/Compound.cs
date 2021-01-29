@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Compound : MonoBehaviour
 {
     public Button potassiumBtnObj, sodiumBtnObj, calciumBtnObj, copperBtnObj;
-    public GameObject greenFlameObj, redFlameObj, whiteFlameObj, yellowFlameObj;
+    public GameObject greenFlameObj, redFlameObj, whiteFlameObj, yellowFlameObj, defaultFlameObj;
     
     // Start is called before the first frame update
     void Start()
@@ -32,13 +32,15 @@ public class Compound : MonoBehaviour
 
     private void ButtonCallBack(Button buttonPressed)
     {
-        if(buttonPressed == potassiumBtnObj)
+        defaultFlameObj.SetActive(false);
+        if (buttonPressed == potassiumBtnObj)
         {
             whiteFlameObj.SetActive(true);
 
             greenFlameObj.SetActive(false);
             redFlameObj.SetActive(false);
             yellowFlameObj.SetActive(false);
+            defaultFlameObj.SetActive(false);
         } else if (buttonPressed == sodiumBtnObj)
         {
             yellowFlameObj.SetActive(true);
@@ -46,6 +48,7 @@ public class Compound : MonoBehaviour
             greenFlameObj.SetActive(false);
             redFlameObj.SetActive(false);
             whiteFlameObj.SetActive(false);
+            defaultFlameObj.SetActive(false);
         } else if (buttonPressed == calciumBtnObj)
         {
             redFlameObj.SetActive(true);
@@ -53,7 +56,7 @@ public class Compound : MonoBehaviour
             greenFlameObj.SetActive(false);
             whiteFlameObj.SetActive(false);
             yellowFlameObj.SetActive(false);
-
+            defaultFlameObj.SetActive(false);
         } else if (buttonPressed == copperBtnObj)
         {
             greenFlameObj.SetActive(true);
@@ -61,6 +64,7 @@ public class Compound : MonoBehaviour
             redFlameObj.SetActive(false);
             whiteFlameObj.SetActive(false);
             yellowFlameObj.SetActive(false);
+            defaultFlameObj.SetActive(false);
         }
     } 
 }
