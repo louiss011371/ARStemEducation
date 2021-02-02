@@ -339,7 +339,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 481243508}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!102 &123112015
 TextMesh:
@@ -942,8 +942,8 @@ Transform:
   - {fileID: 1422800606}
   - {fileID: 937323489}
   - {fileID: 573314638}
-  - {fileID: 123112014}
   - {fileID: 1061825859}
+  - {fileID: 123112014}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2027,7 +2027,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 481243508}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!102 &1061825860
 TextMesh:
@@ -2601,7 +2601,7 @@ GameObject:
   - component: {fileID: 1310134608}
   - component: {fileID: 1310134607}
   m_Layer: 5
-  m_Name: Value Text
+  m_Name: Tan Value Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3269,10 +3269,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480016df8a88b48b083f1554e3af8e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aPoint: {fileID: 1476113530}
   bPoint: {fileID: 340044465}
   cPoint: {fileID: 1422800606}
+  sinAngleText: {fileID: 1542493270}
+  sinValueText: {fileID: 1904137828}
   tanAngleText: {fileID: 661236451}
   tanValueText: {fileID: 1310134607}
+  abDistTextObj: {fileID: 123112013}
+  acDistTextObj: {fileID: 1061825858}
+  bcDistTextObj: {fileID: 573314637}
 --- !u!1 &1490039003
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,10 +3589,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480016df8a88b48b083f1554e3af8e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aPoint: {fileID: 0}
   bPoint: {fileID: 0}
   cPoint: {fileID: 0}
+  sinAngleText: {fileID: 0}
+  sinValueText: {fileID: 0}
   tanAngleText: {fileID: 0}
   tanValueText: {fileID: 0}
+  abDistTextObj: {fileID: 0}
+  acDistTextObj: {fileID: 0}
+  bcDistTextObj: {fileID: 0}
 --- !u!1 &1894663747
 GameObject:
   m_ObjectHideFlags: 0
@@ -3682,7 +3694,7 @@ GameObject:
   - component: {fileID: 1904137829}
   - component: {fileID: 1904137828}
   m_Layer: 5
-  m_Name: Value Text
+  m_Name: Sin Value Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
