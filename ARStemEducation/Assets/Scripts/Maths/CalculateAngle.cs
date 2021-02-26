@@ -12,78 +12,144 @@ public class CalculateAngle : MonoBehaviour
     [SerializeField]
     private Transform cPoint;
     [SerializeField]
-    private Text sinAngleText, sinValueText, cosAngleText, cosValueText, tanAngleText, tanValueText;
-
-    float abDist;
-    float acDist;
-    float bcDist;
-
-    private float sinAngle = 0;
-    private float cosAngle = 0;
-    private float tanAngle = 0;
+    private Text sinAAngleText, sinAValueText, cosAAngleText, cosAValueText, tanAAngleText, tanAValueText;
+    [SerializeField]
+    private Text sinBAngleText, sinBValueText, cosBAngleText, cosBValueText, tanBAngleText, tanBValueText;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("bPoint.transform.position.y = " + bPoint.transform.localPosition);
-        Debug.Log("cPoint.transform.position.x - transform.position.x = " + (cPoint.transform.localPosition.x - transform.localPosition.x));
-
-        TextMesh abDistTextMesh = GameObject.Find("A To B Length").GetComponent<TextMesh>();
-        abDistTextMesh.text = "123";
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        abDist = Vector3.Distance(bPoint.transform.localPosition, aPoint.transform.localPosition);
-        acDist = Vector3.Distance(aPoint.transform.localPosition, cPoint.transform.localPosition);
-        bcDist = Vector3.Distance(bPoint.transform.localPosition, cPoint.transform.localPosition);
+        CalculateLineDist();
+    }
 
+    private void CalculateLineDist()
+    {
+        float abDist = Vector3.Distance(bPoint.transform.localPosition, aPoint.transform.localPosition);
+        float acDist = Vector3.Distance(aPoint.transform.localPosition, cPoint.transform.localPosition);
+        float bcDist = Vector3.Distance(bPoint.transform.localPosition, cPoint.transform.localPosition);
+        LineDistDouble(abDist, acDist, bcDist);
+        CalculateSinCosTan(abDist, acDist, bcDist);
+    }
+
+    private void CalculateSinCosTan(float abDistF, float acDistF, float bcDistF)
+    {
+        // sin cos tan formula
+        float sinAValue = bcDistF / abDistF;
+        float cosAValue = acDistF / abDistF;
+        float tanAValue = bcDistF / acDistF;
+
+        float sinBValue = acDistF / abDistF;
+        float cosBValue = bcDistF / abDistF;
+        float tanBValue = acDistF / bcDistF;
+
+        // sinAngle = Sin-1(sinValue)
+        float sinAAngle = Mathf.Rad2Deg * Mathf.Asin(sinAValue);
+        float sinBAngle = Mathf.Rad2Deg * Mathf.Asin(sinBValue);
+        // cosAngle = Cos-1(cosValue)
+        float cosAAngle = Mathf.Rad2Deg * Mathf.Acos(cosAValue);
+        float cosBAngle = Mathf.Rad2Deg * Mathf.Acos(cosBValue);
+        // tanAngle = Tan-1(tanValue)
+        float tanAAngle = Mathf.Rad2Deg * Mathf.Atan(tanAValue);
+        float tanBAngle = Mathf.Rad2Deg * Mathf.Atan(tanBValue);
+
+        // Round up sin/cos/tan value to 2d.p.
+        RoundUpValueDouble(sinAValue, sinBValue, cosAValue, cosBValue, tanAValue, tanBValue);
+        // Round up sin/cos/tan angle to int
+        RoundUpAngle(sinAAngle, sinBAngle, cosAAngle, cosBAngle, tanAAngle, tanBAngle);
+    }
+
+    private int RoundUpAngleToInt(float angleF)
+    {
+        int angleInt = (int)Mathf.Round(angleF);
+        return angleInt;
+    }
+
+    private double ConvertLineDistToOneDP(float distDouble)
+    {
+        // convert lineDist to 1d.p.
+        double fDistToDouble = Mathf.Round(distDouble * 10f) / 10f;
+        return fDistToDouble;
+    }
+    private double ConvertResultToTwoDP(float valueResult)
+    {
+        // convert result to 2d.p.
+        double twoDPResult = Mathf.Round(valueResult * 100f) / 100f;
+        return twoDPResult;
+    }
+
+    private void LineDistDouble(float abDistF, float acDistF, float bcDistF)
+    {
+        double abDistDouble = ConvertLineDistToOneDP(abDistF);
+        double acDistDouble = ConvertLineDistToOneDP(acDistF);
+        double bcDistDouble = ConvertLineDistToOneDP(bcDistF);
+
+        DisplayLineDist(abDistDouble, acDistDouble, bcDistDouble);
+    }
+
+    private void RoundUpValueDouble(float sinAValue, float sinBValue, float cosAValue, float cosBValue, float tanAValue, float tanBValue)
+    {
+        // convert sin/cos/tan value to 2d.p.
+        double twoDPSinAValue = ConvertResultToTwoDP(sinAValue);
+        double twoDPCosAValue = ConvertResultToTwoDP(cosAValue);
+        double twoDPTanAValue = ConvertResultToTwoDP(tanAValue);
+
+        double twoDPSinBValue = ConvertResultToTwoDP(sinBValue);
+        double twoDPCosBValue = ConvertResultToTwoDP(cosBValue);
+        double twoDPTanBValue = ConvertResultToTwoDP(tanBValue);
+
+        DisplayResult(twoDPSinAValue, twoDPSinBValue, twoDPCosAValue, twoDPCosBValue, twoDPTanAValue, twoDPTanBValue);
+    }
+
+    private void RoundUpAngle(float sinAAngle, float sinBAngle, float cosAAngle, float cosBAngle, float tanAAngle, float tanBAngle)
+    {
+        // round up angle to Int
+        int roundUpSinAAngle = RoundUpAngleToInt(sinAAngle);
+        int roundUpCosAAngle = RoundUpAngleToInt(cosAAngle);
+        int roundUpTanAAngle = RoundUpAngleToInt(tanAAngle);
+
+        int roundUpSinBAngle = RoundUpAngleToInt(sinBAngle);
+        int roundUpCosBAngle = RoundUpAngleToInt(cosBAngle);
+        int roundUpTanBAngle = RoundUpAngleToInt(tanBAngle);
+
+        DisplayAngle(roundUpSinAAngle, roundUpSinBAngle, roundUpCosAAngle, roundUpCosBAngle, roundUpTanAAngle, roundUpTanBAngle);
+    }
+    private void DisplayAngle(int sinA, int sinB, int cosA, int cosB, int tanA, int tanB)
+    {
+        // Display value to UI
+        sinAAngleText.text = "(" + sinA.ToString() + "°)";
+        cosAAngleText.text = "(" + cosA.ToString() + "°)";
+        tanAAngleText.text = "(" + tanA.ToString() + "°)";
+
+        sinBAngleText.text = "(" + sinB.ToString() + "°)";
+        cosBAngleText.text = "(" + cosB.ToString() + "°)";
+        tanBAngleText.text = "(" + tanB.ToString() + "°)";
+    }
+
+    private void DisplayLineDist(double abDist, double acDist, double bcDist)
+    {
         TextMesh abDistTextMesh = GameObject.Find("A To B Length").GetComponent<TextMesh>();
         TextMesh acDistTextMesh = GameObject.Find("A To C Length").GetComponent<TextMesh>();
         TextMesh bcDistTextMesh = GameObject.Find("B To C Length").GetComponent<TextMesh>();
 
-        // convert abDist to 1d.p.
-        double abDistDouble = Mathf.Round(abDist * 10f) / 10f;
-        double acDistDouble = Mathf.Round(acDist * 10f) / 10f;
-        double bcDistDouble = Mathf.Round(bcDist * 10f) / 10f;
+        abDistTextMesh.text = abDist.ToString();
+        acDistTextMesh.text = acDist.ToString();
+        bcDistTextMesh.text = bcDist.ToString();
+    }
 
-        abDistTextMesh.text = abDistDouble.ToString();
-        acDistTextMesh.text = acDistDouble.ToString();
-        bcDistTextMesh.text = bcDistDouble.ToString();
+    private void DisplayResult(double sinAResult, double sinBResult, double cosAResult, double cosBResult, double tanAResult, double tanBResult)
+    { 
+        sinAValueText.text = sinAResult.ToString();
+        cosAValueText.text = cosAResult.ToString();
+        tanAValueText.text = tanAResult.ToString();
 
-        // show this value to UI
-        //Debug.Log("abDist = " + abDistDouble);
-
-        Debug.Log("abDist = " + abDist + " acDist = " + acDist + " bcDist = " + bcDist);
-        float sinValue = bcDist / abDist;
-        float cosValue = acDist / abDist;
-        float tanValue = bcDist / acDist;
-
-        // sinAngle = Sin-1(sinValue)
-        sinAngle = Mathf.Rad2Deg * Mathf.Asin(sinValue);
-        // cosAngle = Cos-1(cosValue)
-        cosAngle = Mathf.Rad2Deg * Mathf.Acos(cosValue);
-        // tanAngle = Tan-1(tanValue)
-        tanAngle = Mathf.Rad2Deg * Mathf.Atan(tanValue);
-        // round up angle to Int
-        float roundUpSinAngle = (int)Mathf.Round(sinAngle);
-        float roundUpCosAngle = (int)Mathf.Round(cosAngle);
-        float roundUpTanAngle = (int)Mathf.Round(tanAngle);
-
-        // Display value to UI
-        sinAngleText.text = "(" + roundUpSinAngle.ToString() + "°)";
-        cosAngleText.text = "(" + roundUpCosAngle.ToString() + "°)";
-        tanAngleText.text = "(" + roundUpTanAngle.ToString() + "°)";
-
-        // convert sin/cos/tan value to 2d.p.
-        double twoDPSinValue = Mathf.Round(sinValue * 100f) / 100f;
-        double twoDPCosValue = Mathf.Round(cosValue * 100f) / 100f;
-        double twoDPTanValue = Mathf.Round(tanValue * 100f) / 100f;
-
-        sinValueText.text = twoDPSinValue.ToString();
-        cosValueText.text = twoDPCosValue.ToString();
-        tanValueText.text = twoDPTanValue.ToString();
+        sinBValueText.text = sinBResult.ToString();
+        cosBValueText.text = cosBResult.ToString();
+        tanBValueText.text = tanBResult.ToString();
     }
 }
