@@ -15,17 +15,26 @@ public class CalculateAngle : MonoBehaviour
     private Text sinAAngleText, sinAValueText, cosAAngleText, cosAValueText, tanAAngleText, tanAValueText;
     [SerializeField]
     private Text sinBAngleText, sinBValueText, cosBAngleText, cosBValueText, tanBAngleText, tanBValueText;
+    [SerializeField]
+    private Image aImageAngle;
+    [SerializeField]
+    private Image bImageAngle;
+    [SerializeField]
+    private Image cImageAngle;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        cImageAngle.transform.position = cPoint.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         CalculateLineDist();
+        aImageAngle.transform.position = aPoint.position;
+        bImageAngle.transform.position = bPoint.position;
     }
 
     private void CalculateLineDist()
@@ -129,6 +138,12 @@ public class CalculateAngle : MonoBehaviour
         sinBAngleText.text = "(" + sinB.ToString() + "°)";
         cosBAngleText.text = "(" + cosB.ToString() + "°)";
         tanBAngleText.text = "(" + tanB.ToString() + "°)";
+
+        float newAngleAFillAmountValue = (float)sinA / 360f;
+        float newAngleBFillAmountValue = (float)sinB / 360f;
+
+        aImageAngle.fillAmount = newAngleAFillAmountValue;
+        bImageAngle.fillAmount = newAngleBFillAmountValue;
     }
 
     private void DisplayLineDist(double abDist, double acDist, double bcDist)
