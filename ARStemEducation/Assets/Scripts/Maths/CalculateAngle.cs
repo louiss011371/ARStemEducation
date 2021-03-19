@@ -21,17 +21,26 @@ public class CalculateAngle : MonoBehaviour
     private Image bImageAngle;
     [SerializeField]
     private Image cImageAngle;
+    private float lockAPointY, lockAPointZ, lockBPointX, lockBPointZ;
 
 
     // Start is called before the first frame update
     void Start()
     {
         cImageAngle.transform.position = cPoint.position;
+        lockAPointY = aPoint.transform.localPosition.y;
+        lockAPointZ = aPoint.transform.localPosition.z;
+        lockBPointX = bPoint.transform.localPosition.x;
+        lockBPointZ = bPoint.transform.localPosition.z;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 lockAPosition = new Vector3(aPoint.transform.localPosition.x, lockAPointY, lockAPointZ);
+        Vector3 lockBPosition = new Vector3(lockBPointX, bPoint.transform.localPosition.y, lockBPointZ);
+        aPoint.transform.localPosition = lockAPosition;
+        bPoint.transform.localPosition = lockBPosition;
         CalculateLineDist();
         aImageAngle.transform.position = aPoint.position;
         bImageAngle.transform.position = bPoint.position;
