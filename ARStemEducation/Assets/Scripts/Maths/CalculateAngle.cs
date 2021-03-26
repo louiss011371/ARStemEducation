@@ -22,7 +22,8 @@ public class CalculateAngle : MonoBehaviour
     [SerializeField]
     private Image cImageAngle;
     private float lockAPointY, lockAPointZ, lockBPointX, lockBPointZ;
-
+    [SerializeField]
+    private GameObject storeLineLength;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +38,10 @@ public class CalculateAngle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 lockAPosition = new Vector3(aPoint.transform.localPosition.x, lockAPointY, lockAPointZ);
-        Vector3 lockBPosition = new Vector3(lockBPointX, bPoint.transform.localPosition.y, lockBPointZ);
+        float aPointXPosition = storeLineLength.GetComponent<StoreLineLength>().GetACLineLength();
+        float bPointXPosition = storeLineLength.GetComponent<StoreLineLength>().GetBCLineLength();
+        Vector3 lockAPosition = new Vector3(aPointXPosition, lockAPointY, lockAPointZ);
+        Vector3 lockBPosition = new Vector3(lockBPointX, bPointXPosition, lockBPointZ);
         aPoint.transform.localPosition = lockAPosition;
         bPoint.transform.localPosition = lockBPosition;
         CalculateLineDist();
@@ -51,6 +54,10 @@ public class CalculateAngle : MonoBehaviour
         float abDist = Vector3.Distance(bPoint.transform.localPosition, aPoint.transform.localPosition);
         float acDist = Vector3.Distance(aPoint.transform.localPosition, cPoint.transform.localPosition);
         float bcDist = Vector3.Distance(bPoint.transform.localPosition, cPoint.transform.localPosition);
+
+        Debug.Log("ab Dist " + abDist);
+        Debug.Log("ac Dist  " + acDist);
+        Debug.Log("bc Dist " + bcDist);
         LineDistDouble(abDist, acDist, bcDist);
         CalculateSinCosTan(abDist, acDist, bcDist);
     }
