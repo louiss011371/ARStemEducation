@@ -17,6 +17,10 @@ public class MenuScece : MonoBehaviour
     {
         SceneManager.LoadScene("ARElectricVuforia");
     }
+    public void MenuToMaths()
+    {
+        SceneManager.LoadScene("Maths");
+    }
     public void MenuToHome()
     {
         SceneManager.LoadScene("HomeScene");
