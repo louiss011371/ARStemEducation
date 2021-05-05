@@ -5,39 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/LoginScene.unity
+    guid: 9e6c2d9b335dc4968a84635f56e1859b
+  - enabled: 1
     path: Assets/Scenes/HomeScene.unity
     guid: 108413f28ca2f49ca8c816947009f2fe
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/ElementsScene.unity
-    guid: ad62439dd383243189f9b24d760e852b
-  - enabled: 0
-    path: Assets/Scenes/ChemistryScene.unity
-    guid: 9a8a2a7d1374a42e6a225550743567fc
-  - enabled: 0
-    path: Assets/Scenes/ElectricScene.unity
-    guid: f8f4270dd79b3489aa6190aba4b81596
-  - enabled: 0
-    path: Assets/Lean/Touch/Examples/12 Transform 3D.unity
-    guid: bcc6d67bd10127441a6feb2e68bfe9e8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/AR/ARChemicalScene.unity
     guid: 0bdfd494642e54618bbf7722a57b1df8
   - enabled: 1
     path: Assets/Scenes/Vuforia/ARElementVuforia.unity
     guid: 43dc4f4665d2644eba27a9cfe42eefba
-  - enabled: 0
-    path: Assets/Lean/Touch/Examples/LeanTouch+.unity
-    guid: 947eac2e6090e724b83bfffc7748bdb4
-  - enabled: 0
-    path: Assets/Lean/Touch/Examples/TwistRotateCustomAxis.unity
-    guid: 1e746ea22b442744c8a81882c3144327
-  - enabled: 0
-    path: Assets/Lean/Touch/Examples/01 Finger Down.unity
-    guid: a6e339405953bb94eb24436b8bcf3a6e
+  - enabled: 1
+    path: Assets/Scenes/Vuforia/ARElectricVuforia.unity
+    guid: b9e0901e32eb741bf8d33b7c5e75bd23
+  - enabled: 1
+    path: Assets/Scenes/Test/Maths.unity
+    guid: 1b983c6f0593b43f8b04fb7eec2d8e85
+  - enabled: 1
+    path: Assets/Scenes/Test/TestScene.unity
+    guid: 271844ff674d444ea9952a3055a301de
   m_configObjects:
     com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: 07258e525acdc490594fa69102ad1cf7,
       type: 2}
