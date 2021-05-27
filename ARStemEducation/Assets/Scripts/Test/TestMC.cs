@@ -7,14 +7,12 @@ using System;
 public class TestMC : MonoBehaviour
 {
     public Button ansABtn, ansBBtn, ansCBtn;
-    public Text ansAText, ansBText, ansCText;
-    public GameObject messageText;
-    public GameObject greenFlameObj;
-    public GameObject redFlameObj;
-    public GameObject whiteFlameObj;
-    public GameObject yellowFlameObj;
+    public Text ansAText, ansBText, ansCText, messageText, questionText;
+    public GameObject messageObj, questionObj;
     public MCArrayList mc;
     private int index = 0;
+    private int count = 0;
+    private int score = 0;
 
     void Start()
     {
@@ -22,10 +20,12 @@ public class TestMC : MonoBehaviour
         mc = gameObject.GetComponent<MCArrayList>();
         mc.SetCurrentIndex(index);
         Debug.Log("mc list size " + mc.GetSize());
-        // init Ans's Text object
+        // init Question and Ans's Text object
+        questionText = questionObj.GetComponent<Text>();
         ansAText = ansABtn.GetComponentInChildren<Text>();
         ansBText = ansBBtn.GetComponentInChildren<Text>();
         ansCText = ansCBtn.GetComponentInChildren<Text>();
+        messageText = messageObj.GetComponent<Text>();
 
         Button btnA = ansABtn.GetComponent<Button>();
         Button btnB = ansBBtn.GetComponent<Button>();
@@ -36,12 +36,11 @@ public class TestMC : MonoBehaviour
         btnB.onClick.AddListener(() => ButtonCallBack(btnB));
         btnC.onClick.AddListener(() => ButtonCallBack(btnC));
 
-        messageText.SetActive(false);
-        // init Compound Flame is hidden
-        greenFlameObj.SetActive(false);
-        redFlameObj.SetActive(false);
-        whiteFlameObj.SetActive(false);
-        yellowFlameObj.SetActive(false);
+        messageObj.SetActive(false);
+        questionText.text = mc.GetValue(index).question;
+        ansAText.text = mc.GetValue(index).ansA;
+        ansBText.text = mc.GetValue(index).ansB;
+        ansCText.text = mc.GetValue(index).ansC;
     }
     void Update()
     {
@@ -54,19 +53,21 @@ public class TestMC : MonoBehaviour
         {
             CheckIndex(buttonPressed);
         }
-        if (index == mc.GetSize())
+        if (index == mc.GetSize() - 1 && count == mc.GetSize())
         {
-            messageText.SetActive(true);
+            messageObj.SetActive(true);
+            messageText.text = "You finished the MC !! , score is " + score.ToString();
             Debug.Log("You finished the MC !!");
         }
     }
 
     private void CheckIndex(Button buttonPressed)
     {
+        // Counting the last question answer is selected or not
+        count += 1;
         if (buttonPressed == ansABtn)
         {
             CheckAns(mc.GetValue(index).ansA, index);
-            greenFlameObj.SetActive(true);
         }
         if (buttonPressed == ansBBtn)
         {
@@ -76,7 +77,8 @@ public class TestMC : MonoBehaviour
         {
             CheckAns(mc.GetValue(index).ansC, index);
         }
-        index += 1;
+        // Any one of answer is selected, go to the next question
+        NextQuestion();
     }
 
     private void CheckAns(string selectedAns, int index)
@@ -85,10 +87,25 @@ public class TestMC : MonoBehaviour
         if (selectedAns == ans)
         {
             Debug.Log("It is correct answer");
+            score += 1;
         }
         else
         {
             Debug.Log("It is wrong answer, the corrent ans is " + ans);
         }
     }
+    private void NextQuestion()
+    {
+        if(index< mc.GetSize() - 1)
+        {
+            index += 1;
+        }
+        Debug.Log("index =" + index);
+        questionText.text = mc.GetValue(index).question;
+        ansAText.text = mc.GetValue(index).ansA;
+        ansBText.text = mc.GetValue(index).ansB;
+        ansCText.text = mc.GetValue(index).ansC;
+       
+    }
 }
+

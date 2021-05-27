@@ -31,6 +31,7 @@ public class MCArrayList : MonoBehaviour
 
 [System.Serializable]
 public class ChemMcArrayList {
+    public string question;
     public string ansA;
     public string ansB;
     public string ansC;
