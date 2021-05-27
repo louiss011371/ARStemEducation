@@ -25,4 +25,8 @@ public class MenuScece : MonoBehaviour
     {
         SceneManager.LoadScene("HomeScene");
     }
+    public void MenuToTestMode()
+    {
+        SceneManager.LoadScene("TestModeScene");
+    }
 }
