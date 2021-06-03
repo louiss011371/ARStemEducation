@@ -6,10 +6,13 @@ using System;
 
 public class TestMC : MonoBehaviour
 {
-    public Button ansABtn, ansBBtn, ansCBtn;
-    public Text ansAText, ansBText, ansCText, messageText, questionText;
-    public GameObject messageObj, questionObj;
+    public Button ansABtn, ansBBtn, ansCBtn, ansDBtn;
+    public Text ansAText, ansBText, ansCText, ansDText, messageText;
+    public GameObject messageObj;
+    public Image messagePanel;
     public MCArrayList mc;
+    public Image questionimage;
+    public Sprite indexQuestionImage;
     private int index = 0;
     private int count = 0;
     private int score = 0;
@@ -21,26 +24,29 @@ public class TestMC : MonoBehaviour
         mc.SetCurrentIndex(index);
         Debug.Log("mc list size " + mc.GetSize());
         // init Question and Ans's Text object
-        questionText = questionObj.GetComponent<Text>();
         ansAText = ansABtn.GetComponentInChildren<Text>();
         ansBText = ansBBtn.GetComponentInChildren<Text>();
         ansCText = ansCBtn.GetComponentInChildren<Text>();
+        ansDText = ansDBtn.GetComponentInChildren<Text>();
         messageText = messageObj.GetComponent<Text>();
 
         Button btnA = ansABtn.GetComponent<Button>();
         Button btnB = ansBBtn.GetComponent<Button>();
         Button btnC = ansCBtn.GetComponent<Button>();
+        Button btnD = ansDBtn.GetComponent<Button>();
 
         // set OnClick listener
         btnA.onClick.AddListener(() => ButtonCallBack(btnA));
         btnB.onClick.AddListener(() => ButtonCallBack(btnB));
         btnC.onClick.AddListener(() => ButtonCallBack(btnC));
-
-        messageObj.SetActive(false);
-        questionText.text = mc.GetValue(index).question;
+        btnD.onClick.AddListener(() => ButtonCallBack(btnD));
+        messagePanel.gameObject.SetActive(false);
+        questionimage.sprite = mc.GetValue(index).questionImage;
+        //newImage.GetComponent<SpriteRenderer>().sprite = mc.GetValue(index).questionImage;
         ansAText.text = mc.GetValue(index).ansA;
         ansBText.text = mc.GetValue(index).ansB;
         ansCText.text = mc.GetValue(index).ansC;
+        ansDText.text = mc.GetValue(index).ansD;
     }
     void Update()
     {
@@ -55,7 +61,7 @@ public class TestMC : MonoBehaviour
         }
         if (index == mc.GetSize() - 1 && count == mc.GetSize())
         {
-            messageObj.SetActive(true);
+            messagePanel.gameObject.SetActive(true);
             messageText.text = "You finished the MC !! , score is " + score.ToString();
             Debug.Log("You finished the MC !!");
         }
@@ -76,6 +82,10 @@ public class TestMC : MonoBehaviour
         if (buttonPressed == ansCBtn)
         {
             CheckAns(mc.GetValue(index).ansC, index);
+        }
+        if (buttonPressed == ansDBtn)
+        {
+            CheckAns(mc.GetValue(index).ansD, index);
         }
         // Any one of answer is selected, go to the next question
         NextQuestion();
@@ -101,11 +111,11 @@ public class TestMC : MonoBehaviour
             index += 1;
         }
         Debug.Log("index =" + index);
-        questionText.text = mc.GetValue(index).question;
         ansAText.text = mc.GetValue(index).ansA;
         ansBText.text = mc.GetValue(index).ansB;
         ansCText.text = mc.GetValue(index).ansC;
-       
+        ansDText.text = mc.GetValue(index).ansD;
+        questionimage.sprite = mc.GetValue(index).questionImage;
     }
 }
 
