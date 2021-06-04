@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="arlab" size="260.000000 147.921219" />
+    <ImageTarget name="2H2OImage" size="135.000000 95.418846" />
+    <ImageTarget name="H2OImage" size="950.000000 694.765198" />
+  </Tracking>
+</QCARConfig>
